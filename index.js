@@ -75,18 +75,23 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames() {
+    const lowerNames = zooAnimals.map(function(item) {
+      return item.animal_name.toLowerCase();
+    });
+    return lowerNames;
   }
-  
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(data){
+    const lowPop = data.filter(function(item) {
+      return item.animal_name.toLowerCase();
+    });
+    return lowPop;
   }
   
 
@@ -96,8 +101,11 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+  function USApop(){
+    const totalPop = zooAnimals.reduce(function(acc, item) {
+      return acc + item.population;
+    }, 0);
+    return totalPop;
   }
   
   
@@ -161,7 +169,9 @@ function CuboidMaker(obj){
 /* 🐴🐴🐴 Step 2: Volume Method 🐴🐴🐴
   Create a method called volume using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   Formula for cuboid volume: length * width * height   */
-
+CuboidMaker.prototype.volume = function() {
+  return this.length * this.width * this.height; 
+}
 
 
 
@@ -170,7 +180,9 @@ function CuboidMaker(obj){
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   Formula for cuboid surface area of a cube: 
   2 * (length * width + length * height + width * height)  */
-
+CuboidMaker.prototype.surfaceArea = function() {
+  return (2 * (this.length * this.width + this.length * this.height + this.width * this.height));
+}
 
 
 
@@ -178,7 +190,7 @@ function CuboidMaker(obj){
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker 🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
-
+const cuboid = new CuboidMaker(4, 5, 5);
 
 
 
@@ -192,7 +204,17 @@ function CuboidMaker(obj){
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 class CuboidMakerTwo{
-
+  constructor (obj) {
+    this.length = obj.length;
+    this.width = obj.width;
+    this.height = obj.height;
+  }
+  volume() {
+    return this.length * this.width * this.height;
+  }
+  surfaceArea() {
+    return (2 * (this.length * this.width + this.length * this.height + this.width * this.height));
+  }
 }
 
 
